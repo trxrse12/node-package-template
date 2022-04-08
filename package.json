@@ -1,0 +1,54 @@
+{
+    "$schema": "https://json.schemastore.org/package",
+    "name": "package-name",
+    "version": "0.0.0",
+    "license": "Apache-2.0",
+    "types": "esm/index.d.ts",
+    "module": "esm/index.js",
+    "main": "cjs/index.js",
+    "private": false,
+    "publishConfig": {
+        "access": "public"
+    },
+    "sideEffects": false,
+    "files": [
+        "cjs",
+        "esm"
+    ],
+    "description": "",
+    "repository": {
+        "directory": ".",
+        "type": "git",
+        "url": "https://github.com/harrysolovay/package-name"
+    },
+    "keywords": [],
+    "devDependencies": {
+        "@swc-node/register": "^1.3.7",
+        "@swc/jest": "^0.2.5",
+        "@trivago/prettier-plugin-sort-imports": "^3.1.0",
+        "@types/jest": "^27.0.2",
+        "@types/node": "^16.11.6",
+        "conditional-type-checks": "^1.0.5",
+        "jest": "^27.3.1",
+        "npm-check-updates": "^12.0.0",
+        "prettier": "^2.4.1",
+        "standard-version": "^9.3.2",
+        "ts-node": "^10.4.0",
+        "tslib": "^2.3.1",
+        "typedoc": "^0.22.7",
+        "typedoc-plugin-markdown": "^3.11.3",
+        "typescript": "^4.4.4"
+    },
+    "scripts": {
+        "test": "jest",
+        "build": "tsc & tsc -P tsconfig.esm.json",
+        "clean": "rm -rf cjs esm",
+        "rm-pkgs": "rm -rf node_modules",
+        "rm-pkgs-and-lock": "npm run rm-pkgs -- package-lock.json",
+        "update-deps": "npm run rm-pkgs-and-lock && ncu -u && npm i",
+        "check": "tsc --noEmit",
+        "release": "standard-version",
+        "release-next": "npm run release -- --prerelease next",
+        "example": "SWC_NODE_PROJECT= node -r @swc-node/register example"
+    }
+}
